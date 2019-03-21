@@ -3,9 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-} 
+h1 {
+  text-align: center;
+}
 
 .pin {
   display: inline-block;
