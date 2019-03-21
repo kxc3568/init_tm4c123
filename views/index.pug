@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(action='/', method='GET')
+  form(action='/initialization', method='POST', onsubmit='generateInit(this.action); return false;')
     div(id='pin-display')
       include includes/port-form.pug
     input(type='submit', value='Initialize')
