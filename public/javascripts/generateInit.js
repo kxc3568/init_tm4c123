@@ -38,7 +38,7 @@ function generateInit(path) {
     }
   }
 
-  clock_bits_str = clock_bits_str.toString(16);
+  clock_bits_str = clock_bits_str.toString(16).toUpperCase();
 
   let initialization_text_arm = 'LDR R1, =SYSCTL_RCGCGPIO_R\n' +
                             'LDR R0, [R1]\n' +
@@ -50,14 +50,14 @@ function generateInit(path) {
     initialization_text_arm += 'LDR R1, =GPIO_PORT' + initialize_ports[i][0] + '_DIR_R\n' +
                           'LDR R0, [R1]\n';
     if (parseInt(initialize_ports[i][1],16) != 0) {
-      initialization_text_arm += 'AND R0, 0x' + (parseInt('FFFFFFFF', 16) - parseInt(initialize_ports[i][1], 16)).toString(16) + '\n';
+      initialization_text_arm += 'AND R0, 0x' + (parseInt('FFFFFFFF', 16) - parseInt(initialize_ports[i][1], 16)).toString(16).toUpperCase() + '\n';
     }
     if (parseInt(initialize_ports[i][2],16) != 0) {
-      initialization_text_arm += 'ORR R0, 0x' + initialize_ports[i][2] + '\n';
+      initialization_text_arm += 'ORR R0, 0x' + initialize_ports[i][2].toUpperCase() + '\n';
     }
     initialization_text_arm += 'STR R0, [R1]\nLDR R1, =GPIO_PORT' + initialize_ports[i][0] + '_DEN_R\n' +
                           'LDR R0, [R1]\n' +
-                          'ORR R0, 0x' + initialize_ports[i][3] + '\n' +
+                          'ORR R0, 0x' + initialize_ports[i][3].toUpperCase() + '\n' +
                           'STR R0, [R1]\n';
   }
 
@@ -65,14 +65,16 @@ function generateInit(path) {
   for (var i = 0; i < initialize_ports.length; i++) {
     if (parseInt(initialize_ports[i][1],16) != 0) {
       initialization_text_c += 'GPIO_PORT' + initialize_ports[i][0] + '_DIR_R &= 0x' +
-                          (parseInt('FFFFFFFF', 16) - parseInt(initialize_ports[i][1], 16)).toString(16) + ';\n';
+                          (parseInt('FFFFFFFF', 16) - parseInt(initialize_ports[i][1], 16)).toString(16).toUpperCase() + ';\n';
     }
     if (parseInt(initialize_ports[i][2],16) != 0) {
-      initialization_text_c += 'GPIO_PORT' + initialize_ports[i][0] + '_DIR_R |= 0x' + initialize_ports[i][2] + ';\n';
+      initialization_text_c += 'GPIO_PORT' + initialize_ports[i][0] + '_DIR_R |= 0x' + initialize_ports[i][2].toUpperCase() + ';\n';
     }
-    initialization_text_c += 'GPIO_PORT' + initialize_ports[i][0] + '_DEN_R |= 0x' + initialize_ports[i][3] + ';\n';
+    initialization_text_c += 'GPIO_PORT' + initialize_ports[i][0] + '_DEN_R |= 0x' + initialize_ports[i][3].toUpperCase() + ';\n';
   }
 
+  initialization_text_arm = initialization_text_arm.replace(/\n/g, "</br>");
+  initialization_text_c = initialization_text_c.replace(/\n/g, "</br>");
 
 
 

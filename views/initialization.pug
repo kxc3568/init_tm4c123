@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  code= arm
-  code= c
+  table(id='init_code')
+    tr
+      th  ARM Cortex-M
+      th  C
+    tr
+      td
+        code !{ arm }
+      td
+        code !{ c }
