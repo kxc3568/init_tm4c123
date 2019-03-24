@@ -5,4 +5,5 @@ block content
   form(action='/initialization', method='POST', onsubmit='generateInit(this.action); return false;')
     div(id='pin-display')
       include includes/port-form.pug
-    input(type='submit', value='Initialize')
+    div(id='btn_init_div')
+      input(id='btn_init' type='submit', value='>>')
