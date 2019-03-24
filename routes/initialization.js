@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET initialization */
 router.post('/', function(req, res, next) {
-  console.log(req.body.code);
-  res.send('done');
+  res.render('initialization', { arm: req.body.arm_code, c: req.body.c_code });
 });
 
 module.exports = router;
