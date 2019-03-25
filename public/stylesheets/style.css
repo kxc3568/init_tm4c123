@@ -16,8 +16,6 @@ table {
 button {
   background-color: white;
   font-size: 10px;
-  height: 3em;
-  width: 4em;
 }
 
 button:focus {
@@ -37,6 +35,8 @@ input:focus {
   border: solid;
   border-radius: 100%;
   border-width: thin;
+  height: 3em;
+  width: 4em;
 }
 
 .input {
@@ -63,6 +63,7 @@ input:focus {
   background-color: white;
   border: none;
   transform: scale(0.5, 1.5);
+  min-width: 200%;
 }
 
 #init_code {
@@ -70,4 +71,14 @@ input:focus {
   margin-right: auto;
   border-collapse: separate;
   border-spacing: 10em 2em;
+}
+
+.btn_copy {
+  display: block;
+  margin: auto;
+  background-color: white;
+  border: solid;
+  border-radius: 5px;
+  border-width: thin;
+  padding: 3%;
 }

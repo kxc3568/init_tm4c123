@@ -6,7 +6,12 @@ block content
       th  ARM Cortex-M
       th  C
     tr
-      td
+      td(id='init_code_arm')
         code !{ arm }
-      td
+      td(id='init_code_c')
         code !{ c }
+    tr
+      td
+        input(class='btn_copy', type='button', onclick='copyText(0)', value='Copy ARM')
+      td
+        input(class='btn_copy', type='button', onclick='copyText(1)', value='Copy C')
