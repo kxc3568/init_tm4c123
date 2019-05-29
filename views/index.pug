@@ -2,6 +2,8 @@ extends layout
 
 block content
   h1 never 👏 initialize 💣 again 😤
+  p inputs are green, outputs are red, click to toggle!
+
   form(action='/initialization', method='POST', onsubmit='generateInit(this.action); return false;')
     div(id='pin-display')
       include includes/port-form.pug
